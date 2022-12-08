@@ -1,6 +1,6 @@
 <template>
   <Teleport to="#app">
-    <div :class="('overlay '+overlay)">
+    <div :class="('overlay '+overlay)" @click="slideOut">
       <div :class="('overlay__email-content '+overlayEmailContent)">
         <div class="overlay__email-content__tools">
           <div class="overlay__email-content__tools__close" @click="slideOut">
@@ -149,6 +149,8 @@
   display: flex;
   flex-direction: column;
   width: calc(100vw - 260px);
+  max-height: 100vh;
+  overflow: hidden;
 }
 .container__title {
   margin-top: 24px;
@@ -180,6 +182,9 @@
 .container__tools__restore {
   margin-left: 40px;
   color: #4B5563;
+}
+.container__email-list {
+  overflow-y: scroll;
 }
 .container__email-list__email {
   padding-left: 24px;
