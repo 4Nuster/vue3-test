@@ -30,11 +30,11 @@
         <input class="container__tools__email-selected__checkbox" type="checkbox" @change="selectAll" v-model="allSelected">
         <span class="container__tools__email-selected__text">Email selected ({{selected.length}})</span>
       </div>
-      <div class="container__tools__read" @click="markSelectedAsRead">
+      <div v-if="selected.length != 0" class="container__tools__read" @click="markSelectedAsRead">
         <img class="container__tools__read__icon" src="../assets/icons/read.svg" />
         <span class="container__tools__read__text">Mark as read (r)</span>
       </div>
-      <div class="container__tools__restore" @click="moveSelectedToInbox">
+      <div v-if="selected.length != 0" class="container__tools__restore" @click="moveSelectedToInbox">
         <img class="container__tools__restore__icon" src="../assets/icons/trash.svg" />
         <span class="container__tools__restore__text">Restore (a)</span>
       </div>
@@ -196,9 +196,13 @@
   align-items: center;
 
   border-top: #E5E7EB 1px solid;
+  transition: background-color 300ms ease-out;
 }
 .container__email-list__email--blue-background {
   background-color: #F3F6FB;
+}
+.container__email-list__email:hover, .container__email-list__email--blue-background:hover {
+  background-color: #D1E2FF;
 }
 .overlay {
   position: fixed;
